@@ -7,4 +7,4 @@ A Naive Bayes model built for That's What She Said classification.
 		puts "That's what she said!"
 	end
 	
-Read more about the algorithm [here](http://blog.echen.me).
+Read more about the algorithm [here](http://blog.echen.me), and see a demo [here](http://twss-classifier.heroku.com/).
