@@ -15,8 +15,11 @@ nb.train
 
 false_positives = 0
 total_count = 0
-File.read("data/gutenberg-fairy-tales.txt").split(".").select{ |x| !x.strip.empty? }.map(&:strip).each do |line|
-  false_positives += 1 if nb.classify(line) > 0.99
+File.read("data/gutenberg-fairy-tales2.txt").split(".").select{ |x| !x.strip.empty? }.map(&:strip).each do |line|
+  if nb.classify(line) > 0.99
+    puts "* #{line}"
+    false_positives += 1 
+  end
   total_count += 1
 end
 puts false_positives
