@@ -1,4 +1,4 @@
-require File.expand_path('../naive-bayes', __FILE__)
+require File.expand_path('../lib/twss-classifier/naive-bayes', __FILE__)
 
 ALL_POS_EXAMPLES = IO.readlines("data/twss-stories-parsed.txt")
 ALL_NEG_EXAMPLES_FMYLIFE = IO.readlines("data/fmylife-parsed.txt")
@@ -12,10 +12,12 @@ NEG_TEST_EXAMPLES = ALL_NEG_EXAMPLES_FMYLIFE.last(500) + ALL_NEG_EXAMPLES_TFLN.l
 
 nb = NaiveBayes.new(1, POS_TRAINING_EXAMPLES, NEG_TRAINING_EXAMPLES)
 nb.train
+nb.yamlize("twss-classifier.yaml")
+exit
 
 false_positives = 0
 total_count = 0
-File.read("data/gutenberg-fairy-tales2.txt").split(".").select{ |x| !x.strip.empty? }.map(&:strip).each do |line|
+File.readlines("data/guetnberg-fairy-tales/twss.txt").select{ |x| !x.strip.empty? }.map(&:strip).each do |line|
   if nb.classify(line) > 0.99
     puts "* #{line}"
     false_positives += 1 
