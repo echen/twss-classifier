@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Edwin Chen"]
   s.email       = ["hello@echen.me"]
-  s.homepage    = ""
+  s.homepage    = "http://twss-classifier.heroku.com"
   s.summary     = %q{A TWSS Classifier.}
   s.description = %q{Determine whether a sentence has "That's what she said!" as a valid response.}
 
